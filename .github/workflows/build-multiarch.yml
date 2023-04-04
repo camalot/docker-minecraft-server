@@ -175,7 +175,7 @@ jobs:
         if: github.actor == github.repository_owner
         with:
           platforms: ${{ matrix.platforms }}
-          push: env.HAS_IMAGE_REPO_ACCESS 
+          push: ${{ env.HAS_IMAGE_REPO_ACCESS }}
             # ${{ 
             # github.ref_type == 'tag' 
             # || github.ref_name == 'master' 
