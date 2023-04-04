@@ -175,15 +175,15 @@ jobs:
         if: github.actor == github.repository_owner
         with:
           platforms: ${{ matrix.platforms }}
-          push: >
-            ${{ 
-            github.ref_type == 'tag' 
-            || github.ref_name == 'master' 
-            || ( github.event_name == 'pull_request' 
-                 && env.HAS_IMAGE_REPO_ACCESS 
-                 && contains(github.event.pull_request.labels.*.name, 'ci/push-image') 
-               )
-            }}
+          push: env.HAS_IMAGE_REPO_ACCESS 
+            # ${{ 
+            # github.ref_type == 'tag' 
+            # || github.ref_name == 'master' 
+            # || ( github.event_name == 'pull_request' 
+            #      && env.HAS_IMAGE_REPO_ACCESS 
+            #      && contains(github.event.pull_request.labels.*.name, 'ci/push-image') 
+            #    )
+            # }}
           tags: ${{ steps.meta.outputs.tags }}
           # ensure latest base image is used
           pull: true
